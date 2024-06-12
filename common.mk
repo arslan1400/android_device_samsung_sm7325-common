@@ -152,12 +152,7 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.display.mapper@2.0.vendor \
     vendor.qti.hardware.display.mapper@3.0.vendor \
     vendor.qti.hardware.display.mapper@4.0.vendor \
-    vendor.display.config@2.0.vendor \
-    AdvancedDisplay
-
-# Doze
-PRODUCT_PACKAGES += \
-    SamsungDoze
+    vendor.display.config@2.0.vendor
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -172,10 +167,6 @@ PRODUCT_PACKAGES += \
 # Fingerprint
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint-service.samsung
-
-# FlipFlap
-PRODUCT_PACKAGES += \
-    FlipFlap
 
 # Gatekeeper
 PRODUCT_PACKAGES += \
@@ -334,7 +325,6 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power-service.samsung-libperfmgr \
     android.hardware.power@1.2.vendor
 
 PRODUCT_COPY_FILES += \
