@@ -30,6 +30,9 @@ PRODUCT_TARGET_VNDK_VERSION := 30
 # No A/B
 AB_OTA_UPDATER := false
 
+# Kernel
+PRODUCT_ENABLE_UFFD_GC := false
+
 # Init files and fstab
 PRODUCT_PACKAGES += \
     fstab.ramplus \
@@ -45,7 +48,7 @@ PRODUCT_PACKAGES += \
     init.samsung.rc \
     init.target.rc \
     init.vendor.onebinary.rc \
-    init.vendor.rilchip.rc \
+    vendor.samsung.rilchip.qcom.rc \
     init.vendor.rilcommon.rc \
     init.vendor.sensors.rc \
     wifi_firmware.rc \
@@ -111,7 +114,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.5-service_64.samsung \
     libgrallocusage.vendor \
-    vendor.qti.hardware.camera.device@1.0.vendor \
+    vendor.qti.hardware.camera.device@1.0.vendor
 
 # CAS
 PRODUCT_PACKAGES += \
@@ -345,16 +348,17 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power-service.samsung-libperfmgr \
+    android.hardware.power-service.pixel-libperfmgr \
     android.hardware.power@1.2.vendor
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
 
-# QMI
+# QCOM
 PRODUCT_PACKAGES += \
     libjson \
-    libprotobuf-cpp-lite-3.9.1-vendorcompat
+    libprotobuf-cpp-lite-3.9.1-vendorcompat \
+    libsqlite.vendor
 
 # Recovery
 PRODUCT_COPY_FILES += \
@@ -368,7 +372,9 @@ PRODUCT_PACKAGES += \
     libxml2 \
     librilutils \
     librmnetctl \
-    secril_config_svc
+    secril_config_svc \
+    sehradiomanager \
+    libjsoncpp.vendor
 
 # Sensors
 PRODUCT_PACKAGES += \
@@ -379,7 +385,8 @@ PRODUCT_PACKAGES += \
 # Thermal
 PRODUCT_PACKAGES += \
     android.hardware.thermal@2.0.vendor \
-    android.frameworks.cameraservice.service@2.1.vendor
+    android.frameworks.cameraservice.service@2.1.vendor \
+    libcamera_metadata.vendor
 
 # Touch features
 PRODUCT_PACKAGES += \
@@ -445,8 +452,7 @@ PRODUCT_SOONG_NAMESPACES += \
     $(COMMON_PATH) \
     hardware/google/interfaces \
     hardware/google/pixel \
-    hardware/samsung \
-    hardware/samsung/aidl/power-libperfmgr
+    hardware/samsung
 
 # Prop files
 TARGET_SYSTEM_PROP += $(COMMON_PATH)/system.prop
